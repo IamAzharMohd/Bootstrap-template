@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/assets/favicon/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/css/bootstrap.min.css">
+    <title>CODE </title>
+</head>
+
+<body>
+    <!-- nav -->
+    <div class="container">
+        <nav class="navbar shadow-sm justify-content-center font-weight-bold">
+            <a href="/index.html" class="nav-link">Home</a>
+            <a href="/login.html" class="nav-link">Login</a>
+            <a href="/signup.html" class="nav-link">Sign Up</a>
+            <a href="/content.html" class="nav-link">Content</a>
+            <a href="/error.html" class="nav-link">Error</a>
+        </nav>
+    </div>
+    <!-- nav -->
+
+    <!-- signup -->
+    <div class="container">
+        <div class=" d-flex align-items-center justify-content-center min-vh-80" >
+            <form class="shadow p-5 mt-5">
+                <div class="form-group">
+                    <h2 class="pb-4">SIGN UP</h2>
+                    <label for="ema">Email address</label>
+                    <input type="email" name="email" class="form-control" id="ema" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="pass">Password</label>
+                    <input type="password" name="password" class="form-control" id="pass" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+      </div>
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const password = form.password.value;
+            const email = form.email.value;
+            const sendSomething = await fetch('/signup', {
+                method: 'POST',
+                body: JSON.stringify({email, password}),
+                headers: {'Content-Type': 'application/json'}
+            });
+            const data = await sendSomething.json();
+            console.log(data);
+        })
+    </script>
+    <!-- signup -->
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="/css/js/bootstrap.min.js"></script>
+</body>
+
+</html>
